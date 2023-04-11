@@ -37,11 +37,7 @@ namespace RTS.UI
             EnemyDetector = new UnitEnemyTargetDetector(Source);
             UnitHealthSystem = new UnitHealthSystem(Source.Health, Source.MaxHealth);
             UnitHealthSystem.OnUpdate += () => { Debug.Log($"{name}: take damage health, health = {UnitHealthSystem.Health.Value}"); };
-            UnitHealthSystem.OnEnd += () =>
-            {
-                BodyCollider.enabled = false;
-                Destroy(gameObject, 0.04f);
-            };
+
             UnitAttackSystem = new UnitAttackSystem(Source.Weapon);
 
             EnemyDetector.Initialize();
@@ -63,6 +59,11 @@ namespace RTS.UI
         public void OnTriggerEnter2D(Collider2D col) => EnemyDetector.Add(col.transform);
         public void OnTriggerExit2D(Collider2D col) => EnemyDetector.Remove(col.transform);
 
+        public void Destroy()
+        {
+            Destroy(gameObject);
+        }
+        
         void OnDestroy()
         {
             stateMachine = null;

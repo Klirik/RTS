@@ -20,26 +20,32 @@ namespace RTS
             this.unitView = unitView;
         }
         
-        // WIP:
-        // Sequence sequence;
-        // public override void Enter()
-        // {
-        //     base.Enter();
-        //     var startColor = unitView.renderer.color;
-        //     sequence?.Kill();
-        //     sequence = DOTween.Sequence()
-        //         .Append(unitView.renderer.DOColor(Color.white, 0.1f))
-        //         .Append(unitView.renderer.DOColor(startColor, 0.1f))
-        //         .SetLoops(2)
-        //         .OnComplete(() => IsDeathing = false);
-        //     IsDeathing = true;
-        // }
-        //
-        // public override void Exit()
-        // {
-        //     base.Exit();
-        //     sequence?.Kill();
-        //     IsDeathing = false;
-        // }
+        Sequence sequence;
+        public override void Enter()
+        {
+            base.Enter();
+            unitView.BodyCollider.enabled = false;
+
+            var startColor = unitView.renderer.color;
+            sequence?.Kill();
+            sequence = DOTween.Sequence()
+                .Append(unitView.renderer.DOColor(Color.white, 0.1f))
+                .Append(unitView.renderer.DOColor(startColor, 0.1f))
+                .SetLoops(2)
+                .OnComplete(OnEnd);
+            IsDeathing = true;
+        }
+
+        void OnEnd()
+        {
+            IsDeathing = false;
+            unitView.Destroy();
+        }
+        
+        public override void Exit()
+        {
+            base.Exit();
+            sequence?.Kill();
+        }
     }
 }

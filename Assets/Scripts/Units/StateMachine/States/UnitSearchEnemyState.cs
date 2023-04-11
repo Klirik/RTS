@@ -10,7 +10,6 @@ namespace RTS
         public UnitSearchEnemyState(UnitView unitView)
         {
             this.unitView = unitView;
-            unitView.movementStrategy.OnEnd += EndMoving;
         }
 
         public override void Enter()
@@ -18,18 +17,19 @@ namespace RTS
             base.Enter();
             IsMoving = true;
             unitView.movementStrategy.MoveRandomly();
+            unitView.movementStrategy.OnEnd += EndMoving;
         }
 
         void EndMoving()
         {
             IsMoving = false;
-            Debug.Log($"End moving {unitView.name}");
         }
 
         public override void Exit()
         {
             base.Exit();
             unitView.movementStrategy.Stop();
+            unitView.movementStrategy.OnEnd -= EndMoving;
         }
     }
 }

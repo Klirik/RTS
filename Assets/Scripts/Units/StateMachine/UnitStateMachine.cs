@@ -8,7 +8,6 @@ namespace RTS
         UnitFightState fightState;
         UnitSearchEnemyState moveState;
         UnitDeathState deathState;
-        
 
         public UnitStateMachine(UnitView unitView)
         {
@@ -22,8 +21,8 @@ namespace RTS
             AddTransition(fightState, idleState, NoTarget);
             AddTransition(fightState, idleState, NoInRangeTarget);
 
-            AddAnyTransition(fightState, CanDamageEnemy);
             AddAnyTransition(deathState, IsDeath);
+            AddAnyTransition(fightState, CanDamageEnemy);
 
             bool IsDeath() => unitView.UnitHealthSystem.Health.Value <= 0;
             bool NoTarget() => unitView.EnemyDetector.CurrentTarget == null;
