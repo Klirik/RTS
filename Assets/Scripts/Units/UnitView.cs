@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace RTS.UI
@@ -61,5 +62,11 @@ namespace RTS.UI
         public void ClickToMove(Vector3 position) => movementStrategy.MoveTo(position, Source.Speed);
         public void OnTriggerEnter2D(Collider2D col) => EnemyDetector.Add(col.transform);
         public void OnTriggerExit2D(Collider2D col) => EnemyDetector.Remove(col.transform);
+
+        void OnDestroy()
+        {
+            stateMachine = null;
+            UnitAttackSystem = null;
+        }
     }
 }
