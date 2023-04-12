@@ -1,11 +1,13 @@
-﻿namespace RTS
+﻿using UniRx;
+
+namespace RTS
 {
     public class Unit
     {
         public readonly UnitConfig Config;
         
-        public int Health;
-        public int MaxHealth;
+        public ReactiveProperty<int> Health;
+        public ReactiveProperty<int> MaxHealth;
 
         public Weapon Weapon;
         
@@ -16,8 +18,8 @@
         {
             Config = config;
             
-            Health = config.Health;
-            MaxHealth = config.MaxHealth;
+            MaxHealth = new ReactiveProperty<int>(config.MaxHealth);
+            Health = new ReactiveProperty<int>(config.Health);
 
             Weapon = config.Weapon;
             

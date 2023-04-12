@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 namespace RTS.UI
@@ -7,6 +6,7 @@ namespace RTS.UI
     public class UnitView : MonoView<Unit>, ITickable, IDamageable
     {
         public SpriteRenderer renderer;
+        public HealthBar healthBar;
         public Collider2D BodyCollider;
         public Collider2D SearchCircle;
         
@@ -35,17 +35,15 @@ namespace RTS.UI
             stateMachine = new UnitStateMachine(this);
             
             EnemyDetector = new UnitEnemyTargetDetector(Source);
-            UnitHealthSystem = new UnitHealthSystem(Source.Health, Source.MaxHealth);
-            UnitHealthSystem.OnUpdate += () => { Debug.Log($"{name}: take damage health, health = {UnitHealthSystem.Health.Value}"); };
-
-            UnitAttackSystem = new UnitAttackSystem(Source.Weapon);
-
+            UnitHealthSystem = new UnitHealthSystem(Source);
+            UnitAttackSystem = new UnitAttackSystem(Source);
             EnemyDetector.Initialize();
         }
 
         void SetView(Unit source)
         {
             renderer.color = colorView[source.Faction];
+            healthBar.Set(source);
         }
 
         public void Tick()

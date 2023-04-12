@@ -25,8 +25,8 @@ namespace RTS
             
             AddAnyTransition(death, IsDeath);
 
-            bool IsDeath() => unitView.UnitHealthSystem.Health.Value <= 0;
-            bool IsTakeDamage() => unitView.UnitHealthSystem.Health.Value <= 0;
+            bool IsDeath() => unitView.Source.Health.Value <= 0;
+            bool IsTakeDamage() => unitView.Source.Health.Value <= 0;
             bool NoTarget() => unitView.EnemyDetector.CurrentTarget == null;
             bool NoMovingNoTarget() => !search.IsMoving && NoTarget();
             bool CanDamageEnemy() => HaveEnemyTarget() && !NoInRangeTarget(); 

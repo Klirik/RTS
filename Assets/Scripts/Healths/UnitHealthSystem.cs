@@ -1,31 +1,22 @@
-﻿using System;
-
-namespace RTS
+﻿namespace RTS
 {
     public class UnitHealthSystem
     {
-        public event Action OnUpdate; 
-        public event Action OnEnd;
+        readonly Unit unit;
 
-        public BoundedInt Health { get; private set; }
-        
-        public UnitHealthSystem(int initialHealth, int maxHealth)
+        public UnitHealthSystem(Unit unit)
         {
-            Health = new BoundedInt(initialHealth, maxHealth);
+            this.unit = unit;
         }
         
         public void TakeDamage(int amount)
         {
-            Health.Value -= amount;
-            OnUpdate?.Invoke();
-            if(Health.Value <= 0)
-                OnEnd?.Invoke();
+            unit.Health.Value -= amount;
         }
 
         public void RestoreHealth(int amount)
         {
-            Health.Value += amount;
-            OnUpdate?.Invoke();
+            unit.Health.Value += amount;
         }
     }
 }

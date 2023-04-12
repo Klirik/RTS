@@ -4,13 +4,14 @@ namespace RTS
 {
     public class UnitAttackSystem : ITickable
     {
-        public Weapon Weapon;
+        readonly Unit unit;
+        public Weapon Weapon => unit.Weapon;
         public float Cooldown { get; set; }
         public bool isCooldown => Cooldown > 0;
 
-        public UnitAttackSystem(Weapon weapon)
+        public UnitAttackSystem(Unit unit)
         {
-            Weapon = weapon;
+            this.unit = unit;
         }
 
         public void Damage(IDamageable target)
