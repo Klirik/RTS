@@ -1,6 +1,6 @@
 ﻿using RTS.UI;
 
-namespace RTS
+namespace RTS.Units
 {
     public class UnitStateMachine : StateMachine
     {
@@ -17,6 +17,7 @@ namespace RTS
             death = new UnitDeathState(unitView);
             
             AddTransition(idle, search, NoMovingNoTarget);
+            AddTransition(idle, fight, CanDamageEnemy);
             AddTransition(search, fight, CanDamageEnemy);
             
             AddTransition(search, idle, NoMovingNoTarget);
@@ -26,7 +27,6 @@ namespace RTS
             AddAnyTransition(death, IsDeath);
 
             bool IsDeath() => unitView.Source.Health.Value <= 0;
-            bool IsTakeDamage() => unitView.Source.Health.Value <= 0;
             bool NoTarget() => unitView.EnemyDetector.CurrentTarget == null;
             bool NoMovingNoTarget() => !search.IsMoving && NoTarget();
             bool CanDamageEnemy() => HaveEnemyTarget() && !NoInRangeTarget(); 

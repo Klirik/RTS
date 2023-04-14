@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using RTS.Units;
 using UnityEngine;
 
 namespace RTS.UI
@@ -15,7 +16,7 @@ namespace RTS.UI
         public UnitHealthSystem UnitHealthSystem;
         public UnitAttackSystem UnitAttackSystem;
         
-        UnitStateMachine stateMachine;
+        public UnitStateMachine StateMachine;
             
         public Dictionary<FactionType, Color> colorView = new()
         {
@@ -32,7 +33,7 @@ namespace RTS.UI
 
         void SetBehaviour()
         {
-            stateMachine = new UnitStateMachine(this);
+            StateMachine = new UnitStateMachine(this);
             
             EnemyDetector = new UnitEnemyTargetDetector(Source);
             UnitHealthSystem = new UnitHealthSystem(Source);
@@ -49,7 +50,7 @@ namespace RTS.UI
         public void Tick()
         {
             UnitAttackSystem?.Tick();
-            stateMachine?.Tick();
+            StateMachine?.Tick();
         }
         
         public void TakeDamage(int amount) => UnitHealthSystem.TakeDamage(amount);
@@ -64,7 +65,7 @@ namespace RTS.UI
         
         void OnDestroy()
         {
-            stateMachine = null;
+            StateMachine = null;
             UnitAttackSystem = null;
         }
     }

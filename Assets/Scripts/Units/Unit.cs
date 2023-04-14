@@ -1,11 +1,10 @@
-﻿using UniRx;
+﻿using RTS.Weapons;
+using UniRx;
 
-namespace RTS
+namespace RTS.Units
 {
     public class Unit
     {
-        public readonly UnitConfig Config;
-        
         public ReactiveProperty<int> Health;
         public ReactiveProperty<int> MaxHealth;
 
@@ -14,17 +13,19 @@ namespace RTS
         public FactionType Faction;
         public float Speed;
         
-        public Unit(UnitConfig config)
+        public Unit(UnitConfigSO config, Weapon weapon, FactionType factionType) 
+            : this(config.SkillSO.Health, config.SkillSO.MaxHealth, config.SkillSO.Speed, weapon, factionType) 
+        {}
+        
+        public Unit(int health, int maxHealth, float speed, Weapon weapon, FactionType factionType)
         {
-            Config = config;
+            Health = new ReactiveProperty<int>(health);
+            MaxHealth = new ReactiveProperty<int>(maxHealth);
+            Speed = speed;
             
-            MaxHealth = new ReactiveProperty<int>(config.MaxHealth);
-            Health = new ReactiveProperty<int>(config.Health);
+            Faction = factionType;
 
-            Weapon = config.Weapon;
-            
-            Faction = config.FactionType;
-            Speed = config.Speed;
+            Weapon = weapon;
         }
     }
 }

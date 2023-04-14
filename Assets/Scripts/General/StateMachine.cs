@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 namespace RTS
 {
     public class StateMachine
     {
-        protected State currentState;
+        public State CurrentState { get; protected set; }
 
         protected Dictionary<Type, List<Transition>> transitions = new Dictionary<Type, List<Transition>>();
         protected List<Transition> currentTransitions = new List<Transition>();
@@ -20,7 +19,7 @@ namespace RTS
             if (transition != null)
                 SetState(transition.To);
             
-            currentState?.Tick();
+            CurrentState?.Tick();
         }
 
         public void AddTransition(State from, State to, Func<bool> condition)
@@ -37,17 +36,17 @@ namespace RTS
 
         public void SetState(State state)
         {
-            if(currentState == state)
+            if(CurrentState == state)
                 return;
-            Debug.Log($"{currentState?.GetType().Name} -> {state.GetType().Name}");
-            currentState?.Exit();
-            currentState = state;
+            Debug.Log($"{CurrentState?.GetType().Name} -> {state.GetType().Name}");
+            CurrentState?.Exit();
+            CurrentState = state;
 
-            transitions.TryGetValue(currentState.GetType(), out currentTransitions);
+            transitions.TryGetValue(CurrentState.GetType(), out currentTransitions);
             if (currentTransitions == null)
                 currentTransitions = emptyTransitions;
             
-            currentState.Enter();
+            CurrentState.Enter();
         }
 
         Transition GetTransition()

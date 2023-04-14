@@ -1,4 +1,5 @@
 ﻿using RTS.Inputs;
+using RTS.Weapons;
 using Zenject;
 
 namespace RTS
@@ -17,6 +18,8 @@ namespace RTS
             Container.Bind<ClickMovementSystem>().AsSingle().NonLazy();
             Container.Bind<SelectSystem>().AsSingle().NonLazy();
             Container.BindInterfacesAndSelfTo<MarkMovementSystem>().AsSingle().WithArguments(prefab).NonLazy();
+
+            Container.Bind<WeaponFactory>().AsSingle();
             
             BindUpdatable<NavigationSystem>();
             BindUpdatable<InputSystem>();

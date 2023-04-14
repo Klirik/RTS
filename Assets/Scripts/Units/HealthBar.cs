@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using UniRx;
+using Unit = RTS.Units.Unit;
 
 namespace RTS.UI
 {

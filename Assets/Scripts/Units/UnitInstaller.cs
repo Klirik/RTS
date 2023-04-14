@@ -1,7 +1,7 @@
 ﻿using RTS.UI;
 using Zenject;
 
-namespace RTS
+namespace RTS.Units
 {
     public class UnitInstaller : MonoInstaller<UnitInstaller>
     {
@@ -14,7 +14,7 @@ namespace RTS
         void BindDefaultFactoryUnit()
         {
             Container.BindInterfacesAndSelfTo<UnitMovement>().AsSingle();
-            Container.BindInterfacesAndSelfTo<DefaultUnitFactory>().AsSingle();
+            Container.BindInterfacesAndSelfTo<UnitFactory>().AsSingle();
             Container.BindIFactory<UnitView>()
                 .FromComponentInNewPrefab(prefab).AsSingle();
 

@@ -1,4 +1,6 @@
-﻿namespace RTS
+﻿using RTS.Units;
+
+namespace RTS
 {
     public class UnitHealthSystem
     {
