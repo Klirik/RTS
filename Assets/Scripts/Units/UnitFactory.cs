@@ -3,7 +3,6 @@ using Zenject;
 
 namespace RTS.Units
 {
-    
     public class UnitFactory : IFactory<UnitConfig, FactionType, Unit>, 
         IFactory<UnitConfigSO, FactionType, Unit>
     {

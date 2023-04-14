@@ -8,19 +8,17 @@ namespace RTS
 {
     public class EntryPoint : MonoBehaviour
     {
-        IFactory<UnitView> unitViewfactory;
+        UnitViewFactory unitViewfactory;
         UnitFactory unitModelFactory;
-        UpdateManager updateManager;
 
         public List<UnitConfigSO> redUnits; 
         public List<UnitConfigSO> greenUnits; 
         
         [Inject]
-        void Init(IFactory<UnitView> unitViewfactory, UnitFactory unitModelFactory, UpdateManager updateManager)
+        void Init(UnitViewFactory unitViewfactory, UnitFactory unitModelFactory)
         {
             this.unitViewfactory = unitViewfactory;
             this.unitModelFactory = unitModelFactory;
-            this.updateManager = updateManager;
         }
         void Start()
         {
@@ -40,11 +38,7 @@ namespace RTS
         void ShowUnit(UnitConfigSO unitConfig, FactionType factionType, Vector3 position, string name)
         {
             var unit = unitModelFactory.Create(unitConfig, factionType);
-            var unitView = unitViewfactory.Create();
-            unitView.name = name;
-            unitView.transform.position = position;
-            unitView.Set(unit);
-            updateManager.Add(unitView);
+            unitViewfactory.Create(unit, position, name);
         }
 
         Vector3 GetLineFormation(int x, List<UnitConfigSO> configs) => new Vector3(x, configs.Count / 2f);

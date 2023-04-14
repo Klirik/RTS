@@ -15,9 +15,7 @@ namespace RTS.Units
         {
             Container.BindInterfacesAndSelfTo<UnitMovement>().AsSingle();
             Container.BindInterfacesAndSelfTo<UnitFactory>().AsSingle();
-            Container.BindIFactory<UnitView>()
-                .FromComponentInNewPrefab(prefab).AsSingle();
-
+            Container.BindInterfacesAndSelfTo<UnitViewFactory>().AsSingle().WithArguments(prefab);
         }
     }
 }
