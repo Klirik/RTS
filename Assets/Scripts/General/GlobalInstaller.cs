@@ -9,7 +9,19 @@ namespace RTS
         public MarkMovementView prefab;
         public override void InstallBindings()
         {
+            BindFaction();
+            BindFactories();
             BindSystem();
+        }
+
+        void BindFactories()
+        {
+            Container.Bind<WeaponFactory>().AsSingle();
+        }
+
+        void BindFaction()
+        {
+            Container.BindInterfacesAndSelfTo<FactionStateCollection>().AsSingle();
         }
 
         void BindSystem()
@@ -19,7 +31,6 @@ namespace RTS
             Container.Bind<SelectSystem>().AsSingle().NonLazy();
             Container.BindInterfacesAndSelfTo<MarkMovementSystem>().AsSingle().WithArguments(prefab).NonLazy();
 
-            Container.Bind<WeaponFactory>().AsSingle();
             
             BindUpdatable<NavigationSystem>();
             BindUpdatable<InputSystem>();

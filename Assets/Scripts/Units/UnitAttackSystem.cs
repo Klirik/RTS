@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace RTS
 {
-    public class UnitAttackSystem : ITickable
+    public class UnitAttackSystem
     {
         readonly Unit unit;
         public Weapon Weapon => unit.Weapon;

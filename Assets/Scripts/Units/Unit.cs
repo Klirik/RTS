@@ -7,6 +7,8 @@ namespace RTS.Units
     {
         public ReactiveProperty<int> Health;
         public ReactiveProperty<int> MaxHealth;
+        
+        public ReactiveProperty<float> GatherDistance;
 
         public Weapon Weapon;
         
@@ -14,14 +16,17 @@ namespace RTS.Units
         public float Speed;
         
         public Unit(UnitConfigSO config, Weapon weapon, FactionType factionType) 
-            : this(config.SkillSO.Health, config.SkillSO.MaxHealth, config.SkillSO.Speed, weapon, factionType) 
+            : this(config.SkillSO.Health, config.SkillSO.MaxHealth, config.SkillSO.Speed
+                , config.SkillSO.GatherDistance, weapon, factionType) 
         {}
         
-        public Unit(int health, int maxHealth, float speed, Weapon weapon, FactionType factionType)
+        public Unit(int health, int maxHealth, float speed, float gatherDistance, Weapon weapon, FactionType factionType)
         {
             Health = new ReactiveProperty<int>(health);
             MaxHealth = new ReactiveProperty<int>(maxHealth);
             Speed = speed;
+
+            GatherDistance = new ReactiveProperty<float>(gatherDistance);
             
             Faction = factionType;
 

@@ -5,6 +5,7 @@ using Zenject;
 
 namespace RTS
 {
+    
     public class UpdateSystem : MonoBehaviour
     {
         HashSet<ITickable> tickablesToDelete = new HashSet<ITickable>();

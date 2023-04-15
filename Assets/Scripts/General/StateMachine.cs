@@ -38,7 +38,6 @@ namespace RTS
         {
             if(CurrentState == state)
                 return;
-            Debug.Log($"{CurrentState?.GetType().Name} -> {state.GetType().Name}");
             CurrentState?.Exit();
             CurrentState = state;
 

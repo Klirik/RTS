@@ -4,17 +4,23 @@ namespace RTS.Inputs
 {
     public class NavigationSystem : ITickable
     {
-        public float speed = 3f;
+        public float Speed = 5f;
+        public float BaseAcceleration = 3f;
+        public float Acceleration = 10f;
+        
+        Camera camera = Camera.main;
         public void Tick()
         {
+            Acceleration = Input.GetKey(KeyCode.LeftShift) ? BaseAcceleration : 1f;   
+                
             if(Input.GetKey(KeyCode.A))
-                Camera.main.transform.position += Vector3.left * speed * Time.deltaTime;
+                camera.transform.position += Vector3.left * (Speed * Acceleration * Time.deltaTime);
             if(Input.GetKey(KeyCode.D))
-                Camera.main.transform.position += Vector3.right * speed * Time.deltaTime;
+                camera.transform.position += Vector3.right * (Speed * Acceleration * Time.deltaTime);
             if(Input.GetKey(KeyCode.W))
-                Camera.main.transform.position += Vector3.up * speed * Time.deltaTime;
+                camera.transform.position += Vector3.up * (Speed * Acceleration * Time.deltaTime);
             if(Input.GetKey(KeyCode.S))
-                Camera.main.transform.position += Vector3.down * speed * Time.deltaTime;
+                camera.transform.position += Vector3.down * (Speed * Acceleration * Time.deltaTime);
         }
     }
 }

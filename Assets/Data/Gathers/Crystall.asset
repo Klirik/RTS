@@ -9,8 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 534c5c9d1f11455484292d8d5987551f, type: 3}
-  m_Name: UnitRange
+  m_Script: {fileID: 11500000, guid: f0bd016473184801a7172e0c0c620d8e, type: 3}
+  m_Name: Crystall
   m_EditorClassIdentifier: 
-  Name: 
-  SkillSO: {fileID: 0}
+  ResourceType: 2
+  Ticks: 25
+  amount: 5
+  isRandomAmount: 1
+  amountDelta: 2

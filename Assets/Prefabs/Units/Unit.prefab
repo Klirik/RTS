@@ -310,7 +310,7 @@ GameObject:
   - component: {fileID: 6510531509604637657}
   - component: {fileID: 126227658427128096}
   m_Layer: 6
-  m_Name: Square
+  m_Name: Unit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

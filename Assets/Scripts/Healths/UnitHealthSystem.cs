@@ -1,24 +1,24 @@
-﻿using RTS.Units;
+﻿using RTS.Healths;
+using RTS.Units;
+using UnityEngine;
 
-namespace RTS
+namespace RTS.Healths
 {
-    public class UnitHealthSystem
+    public class UnitHealthSystem : BaseHaveHealth<Unit>
     {
-        readonly Unit unit;
-
-        public UnitHealthSystem(Unit unit)
+        public UnitHealthSystem(Unit source) : base(source)
         {
-            this.unit = unit;
-        }
-        
-        public void TakeDamage(int amount)
-        {
-            unit.Health.Value -= amount;
         }
 
-        public void RestoreHealth(int amount)
+        public override void TakeDamage(int amount)
         {
-            unit.Health.Value += amount;
+            var currentValue = source.Health.Value - amount;
+            source.Health.Value = Mathf.Clamp(currentValue, 0, source.Health.Value);
+        }
+
+        public override void RestoreHealth(int amount)
+        {
+            source.Health.Value += amount;
         }
     }
 }

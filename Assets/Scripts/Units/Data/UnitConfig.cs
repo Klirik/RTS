@@ -9,6 +9,8 @@ namespace RTS
         
         public float Speed;
 
+        public float GatherDistance;
+
         public WeaponConfig WeaponConfig;
 
         public UnitConfig(float speed, int health, int maxHealth, WeaponConfig weaponConfig)

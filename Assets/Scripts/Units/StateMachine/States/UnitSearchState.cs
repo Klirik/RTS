@@ -3,11 +3,11 @@ using UnityEngine;
 
 namespace RTS
 {
-    public class UnitSearchEnemyState : State
+    public class UnitSearchState : State
     {
         readonly UnitView unitView;
         public bool IsMoving;
-        public UnitSearchEnemyState(UnitView unitView)
+        public UnitSearchState(UnitView unitView)
         {
             this.unitView = unitView;
         }

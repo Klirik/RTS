@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2933755689316357025}
   - component: {fileID: 8141694804769693309}
   m_Layer: 0
-  m_Name: Triangle
+  m_Name: Mark
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -9,10 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38bdca1454c147d0a656761c088117a1, type: 3}
-  m_Name: SkillDefault
+  m_Script: {fileID: 11500000, guid: 956648ca20c44e79bff9094c4e290af1, type: 3}
+  m_Name: Woods
   m_EditorClassIdentifier: 
-  Health: 4
-  MaxHealth: 4
-  Attack: 2
-  Speed: 1
+  InitialValue: 0
