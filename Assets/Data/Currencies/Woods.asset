@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 956648ca20c44e79bff9094c4e290af1, type: 3}
   m_Name: Woods
   m_EditorClassIdentifier: 
+  Type: 1
   InitialValue: 0

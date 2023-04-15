@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 956648ca20c44e79bff9094c4e290af1, type: 3}
   m_Name: Crystalls
   m_EditorClassIdentifier: 
+  Type: 2
   InitialValue: 0
