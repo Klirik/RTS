@@ -31,9 +31,6 @@ namespace RTS
         
         void Start()
         {
-            if(currencyViews.Count != currencies.Count)
-                Debug.LogError("currencyViews.Count != currencies.Count");
-
             CreateFaction(FactionType.Red);
             CreateFaction(FactionType.Green);
 

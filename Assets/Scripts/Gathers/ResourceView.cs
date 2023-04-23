@@ -25,7 +25,7 @@ namespace RTS.Gathers
                 return false;
             
             var currentValue = Source.Ticks.Value - ticksPerOne;
-            Source.Ticks.Value = Mathf.Clamp(currentValue, 0, Source.Ticks.Value);
+            Source.Ticks.Value = Mathf.Max(0, currentValue);
 
             if (Source.Ticks.Value == 0)
             {

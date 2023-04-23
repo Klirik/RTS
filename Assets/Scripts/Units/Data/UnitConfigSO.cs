@@ -1,4 +1,5 @@
-﻿using RTS.Weapons;
+﻿using RTS.Stats;
+using RTS.Weapons;
 using UnityEngine;
 
 namespace RTS
@@ -6,7 +7,9 @@ namespace RTS
     [CreateAssetMenu(fileName = "Config", menuName = "RTS/Unit", order = 1)]
     public class UnitConfigSO : ScriptableObject
     {
-        public UnitConfigSkillSO SkillSO;
+        public StatsConfig StatsConfig;
+
+        public UnitConfigStatSO statSO;
         public WeaponConfigSO WeaponSO;
     }
 }

@@ -12,5 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 534c5c9d1f11455484292d8d5987551f, type: 3}
   m_Name: UnitRange
   m_EditorClassIdentifier: 
-  SkillSO: {fileID: 11400000, guid: 24cf32ad6dccfcd4f9547dca294697bb, type: 2}
+  StatsConfig:
+    StatConfigs:
+    - Type: 6
+      Value: 2
+    - Type: 7
+      Value: 1
+    BoundedStatConfigs:
+    - Type: 1
+      Value: 4
+      MaxValue: 4
+    RandomStatConfigs: []
+  statSO: {fileID: 11400000, guid: 24cf32ad6dccfcd4f9547dca294697bb, type: 2}
   WeaponSO: {fileID: 11400000, guid: 3998da6c4c59c84459d814b2fd0e57dd, type: 2}

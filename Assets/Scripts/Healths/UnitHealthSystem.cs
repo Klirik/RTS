@@ -13,7 +13,7 @@ namespace RTS.Healths
         public override void TakeDamage(int amount)
         {
             var currentValue = source.Health.Value - amount;
-            source.Health.Value = Mathf.Clamp(currentValue, 0, source.Health.Value);
+            source.Health.Value = Mathf.Max(0, currentValue);
         }
 
         public override void RestoreHealth(int amount)

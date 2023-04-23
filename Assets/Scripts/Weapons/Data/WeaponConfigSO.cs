@@ -1,10 +1,13 @@
-﻿using UnityEngine;
+﻿using RTS.Stats;
+using UnityEngine;
 
 namespace RTS.Weapons
 {
     [CreateAssetMenu(fileName = "Weapon", menuName = "RTS/Weapon", order = 1)]
     public class WeaponConfigSO : ScriptableObject
     {
+        public StatsConfig StatsConfig;
+        
         [SerializeField] int attack;
         [SerializeField] bool isRandomAttack; 
         [SerializeField] int attackDelta;

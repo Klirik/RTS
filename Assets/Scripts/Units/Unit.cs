@@ -16,8 +16,8 @@ namespace RTS.Units
         public float Speed;
         
         public Unit(UnitConfigSO config, Weapon weapon, FactionType factionType) 
-            : this(config.SkillSO.Health, config.SkillSO.MaxHealth, config.SkillSO.Speed
-                , config.SkillSO.GatherDistance, weapon, factionType) 
+            : this(config.statSO.Health, config.statSO.MaxHealth, config.statSO.Speed
+                , config.statSO.GatherDistance, weapon, factionType) 
         {}
         
         public Unit(int health, int maxHealth, float speed, float gatherDistance, Weapon weapon, FactionType factionType)

@@ -12,6 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52e9fc916c1c4c9fb9a67e68cbbec885, type: 3}
   m_Name: WeaponDefault
   m_EditorClassIdentifier: 
+  StatsConfig:
+    StatConfigs:
+    - Type: 3
+      Value: 1.5
+    - Type: 5
+      Value: 4
+    BoundedStatConfigs: []
+    RandomStatConfigs:
+    - Type: 4
+      MinValue: 2
+      Delta: 1
   attack: 2
   isRandomAttack: 0
   attackDelta: 0
